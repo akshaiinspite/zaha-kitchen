@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ExternalLink, Utensils, ArrowUp } from 'lucide-react';
+import footerBg from '../assets/footer_bg_ambient.png';
 
 export const FooterSection: React.FC = () => {
   const outlets = [
@@ -9,17 +10,54 @@ export const FooterSection: React.FC = () => {
   ];
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const lenis = (window as any).lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
-    <footer id="contact" style={{ background: '#080504', color: '#FAF6F0', padding: '100px 24px 40px 24px', borderTop: '1px solid rgba(212, 175, 55, 0.25)', position: 'relative' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+    <footer 
+      id="contact" 
+      style={{ 
+        position: 'relative',
+        color: '#FAF6F0', 
+        padding: '100px 24px 40px 24px', 
+        borderTop: '1px solid rgba(212, 175, 55, 0.25)', 
+        overflow: 'hidden',
+        background: '#080504',
+      }}
+    >
+      {/* Generated Ambient Background Texture with Dark Luxury Blend Overlay */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: `url(${footerBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        opacity: 0.35,
+        filter: 'blur(2px) contrast(1.1)',
+        zIndex: 1,
+      }} />
+
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(180deg, rgba(12, 8, 6, 0.94) 0%, rgba(8, 5, 4, 0.97) 100%)',
+        zIndex: 2,
+      }} />
+
+      {/* Main Footer Container */}
+      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* Banner CTA Box */}
         <div style={{
-          background: 'linear-gradient(135deg, #1C120B 0%, #120C07 100%)',
-          border: '1px solid rgba(212, 175, 55, 0.35)',
+          background: 'linear-gradient(135deg, rgba(28, 18, 11, 0.95) 0%, rgba(18, 12, 7, 0.95) 100%)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(212, 175, 55, 0.4)',
           borderRadius: '28px',
           padding: '50px 40px',
           textAlign: 'center',
@@ -51,6 +89,7 @@ export const FooterSection: React.FC = () => {
                 fontSize: '15px',
                 textDecoration: 'none',
                 boxShadow: '0 8px 25px rgba(212, 175, 55, 0.4)',
+                transition: 'all 0.3s ease',
               }}
             >
               <Phone size={18} />
@@ -71,6 +110,7 @@ export const FooterSection: React.FC = () => {
                 fontWeight: 800,
                 fontSize: '15px',
                 textDecoration: 'none',
+                transition: 'all 0.3s ease',
               }}
             >
               <Mail size={18} color="#D4AF37" />
@@ -79,75 +119,121 @@ export const FooterSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer 3 Columns */}
+        {/* Footer 3-Column Grid Layout */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: '48px',
           paddingBottom: '60px',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.15)',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
+          alignItems: 'start',
         }}>
-          {/* Col 1: Brand Info */}
+          {/* Column 1: Brand Info */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
               <div style={{
-                width: '42px',
-                height: '42px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #D4AF37 0%, #C85A17 100%)',
+                background: 'linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                boxShadow: '0 4px 15px rgba(212, 175, 55, 0.4)',
               }}>
                 <Utensils size={22} color="#160F0C" />
               </div>
-              <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#FAF6F0', margin: 0 }}>
+              <h3 className="font-heading" style={{ fontSize: '24px', fontWeight: 800, color: '#FAF6F0', margin: 0, letterSpacing: '0.5px' }}>
                 ZAAHA <span style={{ color: '#D4AF37' }}>KITCHEN</span>
               </h3>
             </div>
 
-            <p style={{ color: '#CBBFB4', fontSize: '14px', lineHeight: 1.7, marginBottom: '20px' }}>
+            <p style={{ color: '#CBBFB4', fontSize: '14.5px', lineHeight: 1.7, marginBottom: '22px', maxWidth: '340px' }}>
               Where culinary tradition meets modern flavour innovation right in the heart of Ernakulam & Infopark IT Hubs.
             </p>
-            <div style={{ fontSize: '13px', color: '#D4AF37', fontWeight: 700 }}>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '12px',
+              color: '#D4AF37',
+              fontWeight: 800,
+              letterSpacing: '1px',
+              background: 'rgba(212, 175, 55, 0.12)',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              padding: '6px 14px',
+              borderRadius: '9999px',
+            }}>
               ESTABLISHED IN 2021
             </div>
           </div>
 
-          {/* Col 2: Direct Contact Details */}
+          {/* Column 2: Direct Contact Details */}
           <div>
-            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '20px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '22px', borderLeft: '3px solid #D4AF37', paddingLeft: '12px' }}>
               Contact Information
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <a 
                 href="tel:9947366906" 
-                style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#CBBFB4', textDecoration: 'none', fontSize: '14.5px', fontWeight: 600 }}
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '14px', 
+                  color: '#FAF6F0', 
+                  textDecoration: 'none', 
+                  fontSize: '15px', 
+                  fontWeight: 600,
+                  background: 'rgba(22, 15, 12, 0.6)',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(212, 175, 55, 0.2)',
+                  transition: 'all 0.25s ease',
+                }}
               >
-                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37' }}>
-                  <Phone size={18} style={{ margin: 'auto' }} />
+                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37', flexShrink: 0 }}>
+                  <Phone size={18} />
                 </div>
-                <span>+91 9947366906</span>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#CBBFB4', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Direct Phone / WhatsApp</div>
+                  <div>+91 9947366906</div>
+                </div>
               </a>
 
               <a 
                 href="mailto:tasteboxinfo2023@gmail.com" 
-                style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#CBBFB4', textDecoration: 'none', fontSize: '14.5px', fontWeight: 600 }}
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '14px', 
+                  color: '#FAF6F0', 
+                  textDecoration: 'none', 
+                  fontSize: '15px', 
+                  fontWeight: 600,
+                  background: 'rgba(22, 15, 12, 0.6)',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(212, 175, 55, 0.2)',
+                  transition: 'all 0.25s ease',
+                }}
               >
-                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37' }}>
-                  <Mail size={18} style={{ margin: 'auto' }} />
+                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37', flexShrink: 0 }}>
+                  <Mail size={18} />
                 </div>
-                <span>tasteboxinfo2023@gmail.com</span>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#CBBFB4', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Email Inquiries</div>
+                  <div>tasteboxinfo2023@gmail.com</div>
+                </div>
               </a>
             </div>
           </div>
 
-          {/* Col 3: Outlet Map Links */}
+          {/* Column 3: Outlet Map Links */}
           <div>
-            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '20px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '22px', borderLeft: '3px solid #D4AF37', paddingLeft: '12px' }}>
               Our 3 Locations
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {outlets.map((outlet, i) => (
                 <a
                   key={i}
@@ -158,22 +244,25 @@ export const FooterSection: React.FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '10px 14px',
-                    borderRadius: '10px',
-                    background: 'rgba(22, 15, 12, 0.8)',
-                    border: '1px solid rgba(212, 175, 55, 0.2)',
+                    padding: '12px 16px',
+                    borderRadius: '12px',
+                    background: 'rgba(22, 15, 12, 0.7)',
+                    border: '1px solid rgba(212, 175, 55, 0.22)',
                     color: '#FAF6F0',
-                    fontSize: '13px',
+                    fontSize: '13.5px',
                     fontWeight: 600,
                     textDecoration: 'none',
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <MapPin size={14} color="#D4AF37" />
-                    <span>{outlet.name}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <MapPin size={16} color="#D4AF37" style={{ flexShrink: 0 }} />
+                    <div>
+                      <div>{outlet.name}</div>
+                      <div style={{ fontSize: '11px', color: '#CBBFB4', fontWeight: 400 }}>{outlet.area}</div>
+                    </div>
                   </div>
-                  <ExternalLink size={14} color="#D4AF37" />
+                  <ExternalLink size={15} color="#D4AF37" style={{ flexShrink: 0 }} />
                 </a>
               ))}
             </div>
@@ -181,29 +270,32 @@ export const FooterSection: React.FC = () => {
 
         </div>
 
-        {/* Bottom Copyright & Scroll to Top */}
+        {/* Bottom Copyright & Scroll to Top Bar */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', paddingTop: '32px' }}>
-          <div style={{ fontSize: '13px', color: '#8E8275' }}>
-            © {new Date().getFullYear()} <strong>Zaaha Kitchen</strong>. Crafted for Ernakulam Food Lovers. All rights reserved.
+          <div style={{ fontSize: '13.5px', color: '#CBBFB4' }}>
+            © {new Date().getFullYear()} <strong style={{ color: '#D4AF37' }}>Zaaha Kitchen</strong>. Crafted for Ernakulam Food Lovers. All rights reserved.
           </div>
 
           <button
             onClick={scrollToTop}
             style={{
-              width: '42px',
-              height: '42px',
-              borderRadius: '12px',
-              background: 'rgba(212, 175, 55, 0.15)',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
-              color: '#D4AF37',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
+              gap: '8px',
+              padding: '10px 20px',
+              borderRadius: '9999px',
+              background: 'rgba(212, 175, 55, 0.15)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              color: '#D4AF37',
+              fontSize: '12.5px',
+              fontWeight: 800,
               cursor: 'pointer',
+              transition: 'all 0.25s ease',
             }}
             title="Back to Top"
           >
-            <ArrowUp size={20} />
+            <span>Back to Top</span>
+            <ArrowUp size={16} />
           </button>
         </div>
 
