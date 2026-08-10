@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-gold: #D4AF37;
+  --color-amber: #E58A2B;
+  --color-dark: #0C0806;
+  --color-text-light: #FAF6F0;
+  --color-text-sub: #CBBFB4;
+}
+
+.sequence-hero-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-dark);
+}
+
+.sequence-hero-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0C0806;
+}
+
+/* Canvas & Video Viewport */
+.sequence-canvas,
+.sequence-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+/* Subtle Vignette & Seamless Bottom Gradient */
+.sequence-vignette {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at center, rgba(12, 8, 6, 0) 45%, rgba(12, 8, 6, 0.75) 100%),
+    linear-gradient(to top, #0C0806 0%, transparent 15%),
+    linear-gradient(to bottom, #0C0806 0%, transparent 15%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sequence-bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, #0C0806 0%, rgba(12, 8, 6, 0) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Floating HUD Card Overlays - Positioned cleanly in lower left */
+.sequence-hud-panel {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  max-width: 480px;
+  width: calc(100vw - 80px);
+  z-index: 30;
+  background: rgba(18, 12, 7, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 28px;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  pointer-events: auto;
+}
+
+.sequence-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  color: var(--color-gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sequence-title {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 2.8vw, 38px);
+  font-weight: 700;
+  color: var(--color-text-light);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.sequence-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-sub);
+  margin-bottom: 22px;
+}
+
+.sequence-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-sequence-order {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%);
+  color: #0C0806;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 13px 26px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-sequence-order:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(229, 138, 43, 0.5);
+}
+
+/* Right Side Navigation Dots & Progress */
+.sequence-progress-bar {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 30;
+  background: rgba(18, 12, 7, 0.75);
+  backdrop-filter: blur(16px);
+  padding: 16px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  pointer-events: auto;
+}
+
+.sequence-progress-track {
+  width: 4px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sequence-progress-fill {
+  width: 100%;
+  background: linear-gradient(to bottom, #D4AF37, #E58A2B);
+  border-radius: 2px;
+  transition: height 0.1s linear;
+}
+
+.sequence-step-text {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-gold);
+  letter-spacing: 1px;
+}
+
+/* Hotspot Pins Overlay */
+.sequence-hotspot-pin {
+  position: absolute;
+  z-index: 25;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sequence-hotspot-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(18, 12, 7, 0.9);
+  border: 2px solid #D4AF37;
+  color: #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.sequence-hotspot-btn.active {
+  background: linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%);
+  color: #160F0C;
+  border-color: #FFFFFF;
+  transform: scale(1.15);
+}
+
+.sequence-hotspot-label {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(12, 8, 6, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #FAF6F0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Preloader Screen */
+.sequence-loader {
+  position: absolute;
+  inset: 0;
+  background: #0C0806;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 60;
+  transition: opacity 0.5s ease;
+}
+
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top-color: var(--color-gold);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .sequence-hud-panel {
+    left: 20px;
+    right: 20px;
+    width: calc(100vw - 40px);
+    bottom: 24px;
+    padding: 20px;
+  }
+  .sequence-title {
+    font-size: 22px;
+  }
+  .sequence-progress-bar {
+    right: 16px;
+  }
+}
