@@ -175,7 +175,7 @@ export const MenuSection: React.FC = () => {
                     padding: '4px 12px',
                     borderRadius: '9999px',
                   }}>
-                    {category.items.length} Items
+                    {category.items.length} Items Available
                   </span>
                 </div>
 
@@ -236,7 +236,7 @@ export const MenuSection: React.FC = () => {
                   transition: 'all 0.25s ease',
                 }}
               >
-                <span>View {category.title.split(' ')[0]} Menu ({category.items.length})</span>
+                <span>View {category.shortTitle} Menu ({category.items.length})</span>
                 <ArrowRight size={15} />
               </button>
             </div>

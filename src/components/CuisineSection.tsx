@@ -70,16 +70,16 @@ export const CuisineSection: React.FC = () => {
   const currentCuisine = cuisines[activeTab];
 
   return (
-    <section id="cuisine" style={{ background: '#120C07', color: '#FAF6F0', padding: '100px 24px', borderTop: '1px solid rgba(212, 175, 55, 0.15)' }}>
+    <section id="cuisine" style={{ background: '#120C07', color: '#FAF6F0', padding: '100px 24px', borderTop: '1px solid rgba(234, 168, 18, 0.2)' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         
         {/* Section Title */}
         <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 60px auto' }}>
-          <span style={{ color: '#D4AF37', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
+          <span style={{ color: '#EAA812', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
             MULTICUISINE EXCELLENCE
           </span>
           <h2 className="font-heading" style={{ fontSize: 'clamp(30px, 3.8vw, 48px)', fontWeight: 700, marginTop: '12px', marginBottom: '16px' }}>
-            A Fusion of <span style={{ color: '#D4AF37' }}>Traditional & Global</span> Flavors
+            A Fusion of <span style={{ color: '#EAA812' }}>Traditional & Global</span> Flavors
           </h2>
           <p style={{ color: '#CBBFB4', fontSize: '16px', lineHeight: 1.7 }}>
             We bring food lovers together through an extraordinary culinary journey spanning four iconic global taste traditions, prepared fresh daily without compromise.
@@ -95,14 +95,14 @@ export const CuisineSection: React.FC = () => {
               style={{
                 padding: '14px 28px',
                 borderRadius: '9999px',
-                background: activeTab === idx ? 'linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%)' : 'rgba(22, 15, 12, 0.8)',
+                background: activeTab === idx ? 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)' : 'rgba(22, 15, 12, 0.8)',
                 color: activeTab === idx ? '#160F0C' : '#FAF6F0',
-                border: `1px solid ${activeTab === idx ? '#D4AF37' : 'rgba(212, 175, 55, 0.25)'}`,
+                border: `1px solid ${activeTab === idx ? '#EAA812' : 'rgba(234, 168, 18, 0.28)'}`,
                 fontWeight: 800,
                 fontSize: '14px',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                boxShadow: activeTab === idx ? '0 8px 25px rgba(212, 175, 55, 0.35)' : 'none',
+                boxShadow: activeTab === idx ? '0 8px 25px rgba(234, 168, 18, 0.4)' : 'none',
               }}
             >
               {c.title}
@@ -114,7 +114,7 @@ export const CuisineSection: React.FC = () => {
         <div style={{
           background: 'rgba(22, 15, 12, 0.9)',
           backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(212, 175, 55, 0.3)',
+          border: '1px solid rgba(234, 168, 18, 0.35)',
           borderRadius: '28px',
           overflow: 'hidden',
           display: 'grid',
@@ -126,9 +126,9 @@ export const CuisineSection: React.FC = () => {
           <div style={{ padding: '48px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span style={{
               display: 'inline-block',
-              background: 'rgba(212, 175, 55, 0.15)',
-              color: '#D4AF37',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
+              background: 'rgba(234, 168, 18, 0.15)',
+              color: '#EAA812',
+              border: '1px solid rgba(234, 168, 18, 0.35)',
               padding: '6px 14px',
               borderRadius: '9999px',
               fontSize: '11px',
@@ -143,7 +143,7 @@ export const CuisineSection: React.FC = () => {
             <h3 className="font-heading" style={{ fontSize: '32px', fontWeight: 700, color: '#FAF6F0', marginBottom: '8px' }}>
               {currentCuisine.title}
             </h3>
-            <p style={{ color: '#D4AF37', fontSize: '15px', fontWeight: 700, marginBottom: '20px' }}>
+            <p style={{ color: '#EAA812', fontSize: '15px', fontWeight: 700, marginBottom: '20px' }}>
               {currentCuisine.subtitle}
             </p>
             <p style={{ color: '#CBBFB4', fontSize: '15px', lineHeight: 1.7, marginBottom: '28px' }}>
@@ -154,7 +154,7 @@ export const CuisineSection: React.FC = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '32px' }}>
               {currentCuisine.highlights.map((h, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FAF6F0', fontSize: '13.5px', fontWeight: 600 }}>
-                  <Sparkles size={14} color="#D4AF37" />
+                  <Sparkles size={14} color="#EAA812" />
                   <span>{h}</span>
                 </div>
               ))}
@@ -175,7 +175,7 @@ export const CuisineSection: React.FC = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '10px',
-                background: 'linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%)',
+                background: 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)',
                 color: '#160F0C',
                 padding: '14px 28px',
                 borderRadius: '12px',
@@ -183,7 +183,7 @@ export const CuisineSection: React.FC = () => {
                 fontSize: '14px',
                 textDecoration: 'none',
                 width: 'fit-content',
-                boxShadow: '0 8px 24px rgba(212, 175, 55, 0.35)',
+                boxShadow: '0 8px 24px rgba(234, 168, 18, 0.4)',
               }}
             >
               <Utensils size={16} />
@@ -214,7 +214,7 @@ export const CuisineSection: React.FC = () => {
               key={index}
               style={{
                 background: 'rgba(22, 15, 12, 0.8)',
-                border: '1px solid rgba(212, 175, 55, 0.25)',
+                border: '1px solid rgba(234, 168, 18, 0.28)',
                 borderRadius: '20px',
                 padding: '24px',
                 display: 'flex',
@@ -228,15 +228,15 @@ export const CuisineSection: React.FC = () => {
                   <span style={{
                     fontSize: '11px',
                     fontWeight: 800,
-                    color: '#D4AF37',
-                    background: 'rgba(212, 175, 55, 0.15)',
+                    color: '#EAA812',
+                    background: 'rgba(234, 168, 18, 0.15)',
                     padding: '3px 10px',
                     borderRadius: '9999px',
-                    border: '1px solid rgba(212, 175, 55, 0.3)'
+                    border: '1px solid rgba(234, 168, 18, 0.3)'
                   }}>
                     {item.badge}
                   </span>
-                  <span style={{ fontSize: '16px', fontWeight: 800, color: '#D4AF37' }}>
+                  <span style={{ fontSize: '16px', fontWeight: 800, color: '#EAA812' }}>
                     {item.price}
                   </span>
                 </div>

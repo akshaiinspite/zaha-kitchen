@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ExternalLink, Utensils, ArrowUp } from 'lucide-react';
+import { Phone, Mail, MapPin, ExternalLink, ArrowUp } from 'lucide-react';
 import footerBg from '../assets/footer_bg_ambient.png';
 
 export const FooterSection: React.FC = () => {
@@ -25,7 +25,7 @@ export const FooterSection: React.FC = () => {
         position: 'relative',
         color: '#FAF6F0', 
         padding: '100px 24px 40px 24px', 
-        borderTop: '1px solid rgba(212, 175, 55, 0.25)', 
+        borderTop: '1px solid rgba(234, 168, 18, 0.3)', 
         overflow: 'hidden',
         background: '#080504',
       }}
@@ -46,7 +46,7 @@ export const FooterSection: React.FC = () => {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(180deg, rgba(12, 8, 6, 0.94) 0%, rgba(8, 5, 4, 0.97) 100%)',
+        background: 'linear-gradient(180deg, rgba(12, 8, 6, 0.94) 0%, rgba(8, 5, 4, 0.98) 100%)',
         zIndex: 2,
       }} />
 
@@ -57,18 +57,18 @@ export const FooterSection: React.FC = () => {
         <div style={{
           background: 'linear-gradient(135deg, rgba(28, 18, 11, 0.95) 0%, rgba(18, 12, 7, 0.95) 100%)',
           backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(212, 175, 55, 0.4)',
+          border: '1px solid rgba(234, 168, 18, 0.4)',
           borderRadius: '28px',
           padding: '50px 40px',
           textAlign: 'center',
           marginBottom: '80px',
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15)',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(234, 168, 18, 0.2)',
         }}>
-          <span style={{ color: '#D4AF37', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
+          <span style={{ color: '#EAA812', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
             VISIT US TODAY OR PLAN YOUR EVENT
           </span>
           <h2 className="font-heading" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 700, marginTop: '10px', marginBottom: '16px' }}>
-            Ready to Experience <span style={{ color: '#D4AF37' }}>Zaaha Kitchen?</span>
+            Ready to Experience <span style={{ color: '#EAA812' }}>Zaaha Kitchen?</span>
           </h2>
           <p style={{ color: '#CBBFB4', fontSize: '16px', maxWidth: '640px', margin: '0 auto 36px auto', lineHeight: 1.7 }}>
             Visit one of our locations in Ernakulam & Infopark today or get in touch with us to plan your next catered event!
@@ -81,14 +81,14 @@ export const FooterSection: React.FC = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '10px',
-                background: 'linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%)',
+                background: 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)',
                 color: '#160F0C',
                 padding: '16px 32px',
                 borderRadius: '9999px',
                 fontWeight: 800,
                 fontSize: '15px',
                 textDecoration: 'none',
-                boxShadow: '0 8px 25px rgba(212, 175, 55, 0.4)',
+                boxShadow: '0 8px 25px rgba(234, 168, 18, 0.45)',
                 transition: 'all 0.3s ease',
               }}
             >
@@ -103,7 +103,7 @@ export const FooterSection: React.FC = () => {
                 alignItems: 'center',
                 gap: '10px',
                 background: 'rgba(30, 20, 15, 0.9)',
-                border: '1px solid rgba(212, 175, 55, 0.35)',
+                border: '1px solid rgba(234, 168, 18, 0.35)',
                 color: '#FAF6F0',
                 padding: '16px 32px',
                 borderRadius: '9999px',
@@ -113,7 +113,7 @@ export const FooterSection: React.FC = () => {
                 transition: 'all 0.3s ease',
               }}
             >
-              <Mail size={18} color="#D4AF37" />
+              <Mail size={18} color="#EAA812" />
               <span>Email: tasteboxinfo2023@gmail.com</span>
             </a>
           </div>
@@ -125,42 +125,38 @@ export const FooterSection: React.FC = () => {
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: '48px',
           paddingBottom: '60px',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
+          borderBottom: '1px solid rgba(234, 168, 18, 0.25)',
           alignItems: 'start',
         }}>
-          {/* Column 1: Brand Info */}
+          {/* Column 1: Executive Brand Info featuring zaaha logo.png */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
-              <div style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 4px 15px rgba(212, 175, 55, 0.4)',
-              }}>
-                <Utensils size={22} color="#160F0C" />
-              </div>
-              <h3 className="font-heading" style={{ fontSize: '24px', fontWeight: 800, color: '#FAF6F0', margin: 0, letterSpacing: '0.5px' }}>
-                ZAAHA <span style={{ color: '#D4AF37' }}>KITCHEN</span>
-              </h3>
+            <div style={{ marginBottom: '20px' }}>
+              <img 
+                src="/zaaha logo.png" 
+                alt="Zaaha Kitchen Logo" 
+                style={{
+                  height: '130px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 6px 20px rgba(234, 168, 18, 0.5))',
+                  display: 'block',
+                }}
+              />
             </div>
 
             <p style={{ color: '#CBBFB4', fontSize: '14.5px', lineHeight: 1.7, marginBottom: '22px', maxWidth: '340px' }}>
-              Where culinary tradition meets modern flavour innovation right in the heart of Ernakulam & Infopark IT Hubs.
+              Where Malabar & Middle Eastern culinary tradition meets modern flavor innovation in Ernakulam & Infopark IT Hubs.
             </p>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
               fontSize: '12px',
-              color: '#D4AF37',
+              color: '#EAA812',
               fontWeight: 800,
               letterSpacing: '1px',
-              background: 'rgba(212, 175, 55, 0.12)',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
+              background: 'rgba(234, 168, 18, 0.12)',
+              border: '1px solid rgba(234, 168, 18, 0.35)',
               padding: '6px 14px',
               borderRadius: '9999px',
             }}>
@@ -170,7 +166,7 @@ export const FooterSection: React.FC = () => {
 
           {/* Column 2: Direct Contact Details */}
           <div>
-            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '22px', borderLeft: '3px solid #D4AF37', paddingLeft: '12px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '22px', borderLeft: '3px solid #EAA812', paddingLeft: '12px' }}>
               Contact Information
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -187,11 +183,11 @@ export const FooterSection: React.FC = () => {
                   background: 'rgba(22, 15, 12, 0.6)',
                   padding: '12px 16px',
                   borderRadius: '12px',
-                  border: '1px solid rgba(212, 175, 55, 0.2)',
+                  border: '1px solid rgba(234, 168, 18, 0.25)',
                   transition: 'all 0.25s ease',
                 }}
               >
-                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37', flexShrink: 0 }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(234, 168, 18, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#EAA812', flexShrink: 0 }}>
                   <Phone size={18} />
                 </div>
                 <div>
@@ -213,11 +209,11 @@ export const FooterSection: React.FC = () => {
                   background: 'rgba(22, 15, 12, 0.6)',
                   padding: '12px 16px',
                   borderRadius: '12px',
-                  border: '1px solid rgba(212, 175, 55, 0.2)',
+                  border: '1px solid rgba(234, 168, 18, 0.25)',
                   transition: 'all 0.25s ease',
                 }}
               >
-                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37', flexShrink: 0 }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(234, 168, 18, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#EAA812', flexShrink: 0 }}>
                   <Mail size={18} />
                 </div>
                 <div>
@@ -230,7 +226,7 @@ export const FooterSection: React.FC = () => {
 
           {/* Column 3: Outlet Map Links */}
           <div>
-            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '22px', borderLeft: '3px solid #D4AF37', paddingLeft: '12px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 700, color: '#FAF6F0', marginBottom: '22px', borderLeft: '3px solid #EAA812', paddingLeft: '12px' }}>
               Our 3 Locations
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -247,7 +243,7 @@ export const FooterSection: React.FC = () => {
                     padding: '12px 16px',
                     borderRadius: '12px',
                     background: 'rgba(22, 15, 12, 0.7)',
-                    border: '1px solid rgba(212, 175, 55, 0.22)',
+                    border: '1px solid rgba(234, 168, 18, 0.25)',
                     color: '#FAF6F0',
                     fontSize: '13.5px',
                     fontWeight: 600,
@@ -256,13 +252,13 @@ export const FooterSection: React.FC = () => {
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <MapPin size={16} color="#D4AF37" style={{ flexShrink: 0 }} />
+                    <MapPin size={16} color="#EAA812" style={{ flexShrink: 0 }} />
                     <div>
                       <div>{outlet.name}</div>
                       <div style={{ fontSize: '11px', color: '#CBBFB4', fontWeight: 400 }}>{outlet.area}</div>
                     </div>
                   </div>
-                  <ExternalLink size={15} color="#D4AF37" style={{ flexShrink: 0 }} />
+                  <ExternalLink size={15} color="#EAA812" style={{ flexShrink: 0 }} />
                 </a>
               ))}
             </div>
@@ -273,7 +269,7 @@ export const FooterSection: React.FC = () => {
         {/* Bottom Copyright & Scroll to Top Bar */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', paddingTop: '32px' }}>
           <div style={{ fontSize: '13.5px', color: '#CBBFB4' }}>
-            © {new Date().getFullYear()} <strong style={{ color: '#D4AF37' }}>Zaaha Kitchen</strong>. Crafted for Ernakulam Food Lovers. All rights reserved.
+            © {new Date().getFullYear()} <strong style={{ color: '#EAA812' }}>Zaaha Kitchen</strong>. Crafted for Ernakulam Food Lovers. All rights reserved.
           </div>
 
           <button
@@ -284,9 +280,9 @@ export const FooterSection: React.FC = () => {
               gap: '8px',
               padding: '10px 20px',
               borderRadius: '9999px',
-              background: 'rgba(212, 175, 55, 0.15)',
-              border: '1px solid rgba(212, 175, 55, 0.35)',
-              color: '#D4AF37',
+              background: 'rgba(234, 168, 18, 0.15)',
+              border: '1px solid rgba(234, 168, 18, 0.35)',
+              color: '#EAA812',
               fontSize: '12.5px',
               fontWeight: 800,
               cursor: 'pointer',

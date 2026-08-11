@@ -3,7 +3,7 @@
 :root {
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --color-gold: #D4AF37;
+  --color-gold: #EAA812;
   --color-amber: #E58A2B;
   --color-dark: #0C0806;
   --color-text-light: #FAF6F0;
@@ -253,6 +253,16 @@
   border: 3px solid rgba(212, 175, 55, 0.2);
   border-top-color: var(--color-gold);
   border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+.loader-spinner-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2.5px solid rgba(212, 175, 55, 0.2);
+  border-top-color: #D4AF37;
+  border-right-color: #E58A2B;
   animation: spin 1s infinite linear;
 }
 

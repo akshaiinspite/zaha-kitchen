@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Preloader } from './components/Preloader';
 import { Header } from './components/Header';
 import { CanvasSequenceHero } from './components/CanvasSequenceHero';
 import { AboutSection } from './components/AboutSection';
@@ -46,6 +47,9 @@ export function App() {
 
   return (
     <div style={{ background: '#0C0806', minHeight: '100vh', color: '#FAF6F0', overflowX: 'hidden' }}>
+      {/* Global Site Luxury Preloader */}
+      <Preloader />
+
       {/* Header Navigation */}
       <Header />
 

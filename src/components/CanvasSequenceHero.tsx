@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Utensils } from 'lucide-react';
 import '../styles/CanvasHero.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -185,12 +186,59 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
         {/* High-DPI Image Frame Canvas */}
         <canvas ref={canvasRef} className="sequence-canvas" />
 
-        {/* Preloader Overlay */}
+        {/* Luxury Branded Preloader Overlay */}
         {!isLoaded && (
           <div className="sequence-loader">
-            <div className="loader-spinner" />
-            <div style={{ color: '#D4AF37', fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', marginTop: '12px' }}>
-              LOADING HERITAGE FRAMES ({loadProgress}%)
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              maxWidth: '360px',
+              textAlign: 'center',
+              padding: '24px',
+            }}>
+              {/* Spinning Logo Container */}
+              <div style={{ position: 'relative', width: '76px', height: '76px', marginBottom: '24px' }}>
+                <div className="loader-spinner-outer" />
+                <div style={{
+                  position: 'absolute',
+                  inset: '6px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #D4AF37 0%, #E58A2B 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#160F0C',
+                  boxShadow: '0 0 25px rgba(212, 175, 55, 0.4)',
+                }}>
+                  <Utensils size={28} />
+                </div>
+              </div>
+
+              <h2 className="font-heading" style={{ fontSize: '24px', fontWeight: 800, color: '#FAF6F0', margin: '0 0 6px 0', letterSpacing: '1px' }}>
+                ZAAHA <span style={{ color: '#D4AF37' }}>KITCHEN</span>
+              </h2>
+
+              <p style={{ fontSize: '13px', color: '#CBBFB4', margin: '0 0 20px 0', fontWeight: 500 }}>
+                Preparing Authentic Malabar Experience...
+              </p>
+
+              {/* Progress Bar & Percentage */}
+              <div style={{ width: '100%', background: 'rgba(30, 20, 15, 0.8)', border: '1px solid rgba(212, 175, 55, 0.25)', borderRadius: '9999px', padding: '3px', marginBottom: '10px' }}>
+                <div style={{
+                  height: '8px',
+                  width: `${loadProgress}%`,
+                  background: 'linear-gradient(90deg, #D4AF37 0%, #E58A2B 100%)',
+                  borderRadius: '9999px',
+                  transition: 'width 0.2s ease-out',
+                  boxShadow: '0 0 10px rgba(212, 175, 55, 0.6)',
+                }} />
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: '11px', fontWeight: 800, color: '#D4AF37', letterSpacing: '1px' }}>
+                <span>LOADING HERITAGE EXPERIENCE</span>
+                <span>{loadProgress}%</span>
+              </div>
             </div>
           </div>
         )}
@@ -221,7 +269,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
             }}
           >
             <div className="sequence-badge" style={{ margin: '0 auto 16px auto', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
-              <span>✨</span> HERITAGE MALABAR EXPERIENCE
+              <span>✨</span> ERNAKULAM'S FAVORITE MULTICUISINE HOTSPOT
             </div>
             <h1
               style={{
@@ -235,20 +283,20 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
                 textShadow: '0 4px 28px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.95)',
               }}
             >
-              Authentic Chai & <span style={{ color: '#D4AF37' }}>Artisan Snacks</span>
+              Authentic Malabar & <span style={{ color: '#EAA812' }}>Multicuisine Dining</span>
             </h1>
             <p
               style={{
                 fontSize: '16px',
                 color: '#E2D7CB',
-                maxWidth: '600px',
+                maxWidth: '660px',
                 margin: '0 auto 26px auto',
                 lineHeight: 1.6,
                 fontWeight: 500,
                 textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.95)',
               }}
             >
-              Immerse yourself in the warmth of freshly pulled meter tea paired with crisp banana fritters, uzhunnu vada, and traditional Kerala recipes.
+              Experience a rich fusion of traditional Kerala Nadan meals, charcoal Arabic Alfaham & Majboos, sizzling Chinese delights, and artisan tea snacks prepared fresh daily.
             </p>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a 
