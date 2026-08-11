@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Utensils, MapPin, Phone, Calendar, Info, Award, Menu as MenuIcon, X, Coffee } from 'lucide-react';
+import { Utensils, MapPin, Phone, Calendar, Info, Award, Menu as MenuIcon, X } from 'lucide-react';
 
 interface HeaderProps {
   activeStop?: number;
@@ -21,7 +21,6 @@ export const Header: React.FC<HeaderProps> = () => {
   const navLinks = [
     { label: 'About Us', icon: Info, href: '#about' },
     { label: 'Multicuisine', icon: Utensils, href: '#cuisine' },
-    { label: 'Menu', icon: Coffee, href: '#menu' },
     { label: 'Outlets', icon: MapPin, href: '#locations' },
     { label: 'Catering', icon: Calendar, href: '#catering' },
     { label: 'Why Zaaha', icon: Award, href: '#why-us' },

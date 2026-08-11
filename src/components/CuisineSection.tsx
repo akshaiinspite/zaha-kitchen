@@ -161,10 +161,10 @@ export const CuisineSection: React.FC = () => {
             </div>
 
             <a 
-              href="#menu"
+              href="#contact-form-section"
               onClick={(e) => {
                 e.preventDefault();
-                const target = document.querySelector('#menu');
+                const target = document.querySelector('#contact-form-section');
                 if (target) {
                   const lenis = (window as any).lenis;
                   if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.2 });
@@ -187,7 +187,7 @@ export const CuisineSection: React.FC = () => {
               }}
             >
               <Utensils size={16} />
-              <span>Explore Menu Catalog</span>
+              <span>Reserve & Order Now</span>
               <ArrowRight size={16} />
             </a>
           </div>

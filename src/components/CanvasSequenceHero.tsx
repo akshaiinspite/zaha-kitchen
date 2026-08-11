@@ -300,12 +300,12 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
             </p>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a 
-                href="#menu" 
+                href="#cuisine" 
                 className="btn-sequence-order" 
                 style={{ textDecoration: 'none' }}
                 onClick={(e) => {
                   e.preventDefault();
-                  const target = document.querySelector('#menu');
+                  const target = document.querySelector('#cuisine');
                   if (target) {
                     const lenis = (window as any).lenis;
                     if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.2 });
@@ -313,7 +313,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
                   }
                 }}
               >
-                Explore Menu
+                Explore Cuisines
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>

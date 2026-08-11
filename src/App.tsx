@@ -7,7 +7,6 @@ import { Header } from './components/Header';
 import { CanvasSequenceHero } from './components/CanvasSequenceHero';
 import { AboutSection } from './components/AboutSection';
 import { CuisineSection } from './components/CuisineSection';
-import { MenuSection } from './components/MenuSection';
 import { LocationsSection } from './components/LocationsSection';
 import { CateringSection } from './components/CateringSection';
 import { WhyUsSection } from './components/WhyUsSection';
@@ -66,10 +65,7 @@ export function App() {
         {/* 2. Multicuisine Showcase (Arabic, Continental, Chinese, Kerala) */}
         <CuisineSection />
 
-        {/* 3. Detailed Menu Section with Authentic Food Dishes & Photo Cards */}
-        <MenuSection />
-
-        {/* 4. Our Expansion & Locations Section */}
+        {/* 3. Our Expansion & Locations Section */}
         <LocationsSection />
 
         {/* 5. Catering & Special Events Section */}
