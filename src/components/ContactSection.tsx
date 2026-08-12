@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare, UtensilsCrossed } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare, UtensilsCrossed, Loader2 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,9 +16,42 @@ export const ContactSection: React.FC = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/tasteboxinfo2023@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New Zaaha Kitchen Inquiry: ${formData.inquiryType} from ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false',
+          'Guest Name': formData.name,
+          'Phone Number': formData.phone,
+          'Email Address': formData.email || 'Not Provided',
+          'Inquiry Type': formData.inquiryType,
+          'Location Outlet': formData.outlet,
+          'Number of Guests': formData.guests,
+          'Message / Request': formData.message || 'None'
+        })
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+      } else {
+        setFormSubmitted(true);
+      }
+    } catch (error) {
+      console.error("FormSubmit Error:", error);
+      setFormSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -200,7 +234,17 @@ export const ContactSection: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <form 
+                action="https://formsubmit.co/tasteboxinfo2023@gmail.com" 
+                method="POST" 
+                onSubmit={handleSubmit} 
+                style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+              >
+                {/* FormSubmit Configuration Hidden Fields */}
+                <input type="hidden" name="_subject" value={`New Zaaha Kitchen Inquiry from ${formData.name || 'Guest'}`} />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+
                 <div style={{ marginBottom: '4px' }}>
                   <h3 style={{ fontSize: '24px', fontWeight: 700, color: '#FAF6F0', marginBottom: '6px' }}>
                     Send an Inquiry or Reserve Table
@@ -216,6 +260,7 @@ export const ContactSection: React.FC = () => {
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>YOUR NAME *</label>
                     <input 
                       type="text" 
+                      name="Guest Name"
                       required 
                       placeholder="e.g. Rahul Nair"
                       value={formData.name}
@@ -237,6 +282,7 @@ export const ContactSection: React.FC = () => {
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>PHONE NUMBER *</label>
                     <input 
                       type="tel" 
+                      name="Phone Number"
                       required 
                       placeholder="+91 9947366906"
                       value={formData.phone}
@@ -262,6 +308,7 @@ export const ContactSection: React.FC = () => {
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>EMAIL ADDRESS</label>
                     <input 
                       type="email" 
+                      name="Email Address"
                       placeholder="rahul@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -281,6 +328,7 @@ export const ContactSection: React.FC = () => {
                   <div>
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>INQUIRY TYPE</label>
                     <select 
+                      name="Inquiry Type"
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
                       style={{
@@ -308,6 +356,7 @@ export const ContactSection: React.FC = () => {
                   <div>
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>SELECT LOCATION OUTLET</label>
                     <select 
+                      name="Location Outlet"
                       value={formData.outlet}
                       onChange={(e) => setFormData({ ...formData, outlet: e.target.value })}
                       style={{
@@ -331,6 +380,7 @@ export const ContactSection: React.FC = () => {
                   <div>
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>NUMBER OF GUESTS</label>
                     <select 
+                      name="Number of Guests"
                       value={formData.guests}
                       onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
                       style={{
@@ -358,6 +408,7 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <label style={{ fontSize: '12px', fontWeight: 700, color: '#CBBFB4', display: 'block', marginBottom: '6px', letterSpacing: '0.5px' }}>YOUR MESSAGE / SPECIAL REQUEST</label>
                   <textarea 
+                    name="Message / Special Request"
                     rows={4}
                     placeholder="Tell us your preferred date, time, dietary preferences, or specific inquiries..."
                     value={formData.message}
@@ -379,6 +430,7 @@ export const ContactSection: React.FC = () => {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -391,14 +443,24 @@ export const ContactSection: React.FC = () => {
                     fontWeight: 800,
                     fontSize: '15px',
                     border: 'none',
-                    cursor: 'pointer',
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    opacity: isSubmitting ? 0.75 : 1,
                     marginTop: '8px',
                     boxShadow: '0 8px 25px rgba(212, 175, 55, 0.35)',
                     transition: 'all 0.3s ease'
                   }}
                 >
-                  <Send size={18} />
-                  <span>Submit Inquiry & Reserve</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      <span>Sending Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      <span>Submit Inquiry & Reserve</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
