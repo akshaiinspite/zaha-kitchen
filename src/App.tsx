@@ -8,7 +8,6 @@ import { CanvasSequenceHero } from './components/CanvasSequenceHero';
 import { AboutSection } from './components/AboutSection';
 import { CuisineSection } from './components/CuisineSection';
 import { LocationsSection } from './components/LocationsSection';
-import { CateringSection } from './components/CateringSection';
 import { WhyUsSection } from './components/WhyUsSection';
 import { ContactSection } from './components/ContactSection';
 import { FooterSection } from './components/FooterSection';
@@ -68,10 +67,7 @@ export function App() {
         {/* 3. Our Expansion & Locations Section */}
         <LocationsSection />
 
-        {/* 5. Catering & Special Events Section */}
-        <CateringSection />
-
-        {/* 6. Why Choose Zaaha Kitchen? */}
+        {/* 4. Why Choose Zaaha Kitchen? */}
         <WhyUsSection />
 
         {/* 7. Dedicated Contact & Reservation Form Section (Before Footer) */}

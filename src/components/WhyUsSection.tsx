@@ -156,7 +156,7 @@ export const WhyUsSection: React.FC = () => {
           padding: '40px',
           boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(234, 168, 18, 0.2)',
         }}>
-          {/* Left Column: Professionally Framed design haza.png */}
+          {/* Left Column: Professionally Framed Yellow Malabar Heritage Art Image */}
           <div style={{ position: 'relative' }}>
             <div style={{
               borderRadius: '20px',

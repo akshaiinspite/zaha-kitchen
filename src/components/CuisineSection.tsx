@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Sparkles, ArrowRight, Utensils } from 'lucide-react';
-import arabicImg from '../assets/dish_arabic_mandi_1786103780403.png';
 import continentalImg from '../assets/dish_continental_steak_1786103795932.png';
 import chineseImg from '../assets/dish_chinese_dragon_1786103811125.png';
 import naadanImg from '../assets/dish_kerala_tea_snacks_1786103823980.png';
+
+const arabicImg = '/mandhi image.png';
 
 export const CuisineSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);

@@ -1,6 +1,5 @@
 import React from 'react';
 import { MapPin, Navigation, Clock, Building2, ExternalLink } from 'lucide-react';
-import infoparkImg from '../assets/zaaha_location_infopark_1786103864847.png';
 
 export const LocationsSection: React.FC = () => {
   const outlets = [
@@ -58,7 +57,6 @@ export const LocationsSection: React.FC = () => {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
           gap: '32px',
-          marginBottom: '60px',
         }}>
           {outlets.map((outlet, idx) => (
             <div 
@@ -150,38 +148,6 @@ export const LocationsSection: React.FC = () => {
               </a>
             </div>
           ))}
-        </div>
-
-        {/* Real Infopark Ambiance Showcase Banner */}
-        <div style={{
-          position: 'relative',
-          borderRadius: '28px',
-          overflow: 'hidden',
-          border: '1px solid rgba(212, 175, 55, 0.3)',
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.7)',
-          maxHeight: '360px',
-        }}>
-          <img 
-            src={infoparkImg} 
-            alt="Zaaha Infopark Dining Ambiance" 
-            style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }}
-          />
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to right, rgba(12, 8, 6, 0.95) 0%, rgba(12, 8, 6, 0.4) 60%, transparent 100%)',
-          }} />
-          <div style={{ position: 'absolute', bottom: '40px', left: '40px', maxWidth: '540px' }}>
-            <span style={{ color: '#D4AF37', fontSize: '11px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-              MODERN IT HUB DINING EXPERIENCE
-            </span>
-            <h3 style={{ fontSize: '28px', fontWeight: 700, color: '#FAF6F0', marginTop: '8px', marginBottom: '12px' }}>
-              Welcoming Techies & Diners Every Day
-            </h3>
-            <p style={{ color: '#CBBFB4', fontSize: '14px', lineHeight: 1.6 }}>
-              Step into our stylish lounge environments at Athulya & Vismaya Infopark Phase 1 for a quick lunch or an enjoyable evening break.
-            </p>
-          </div>
         </div>
 
       </div>
