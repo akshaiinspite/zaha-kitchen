@@ -142,85 +142,116 @@ export const WhyUsSection: React.FC = () => {
           })}
         </div>
 
-        {/* Malabar Culinary Artistry Showcase Banner featuring design haza.png */}
+        {/* Edge-to-Edge Full-Width Malabar Culinary Artistry Showcase Banner */}
         <div style={{
           marginTop: '80px',
-          background: 'linear-gradient(135deg, rgba(28, 18, 11, 0.95) 0%, rgba(18, 12, 7, 0.95) 100%)',
-          border: '1px solid rgba(234, 168, 18, 0.4)',
-          borderRadius: '28px',
+          width: '100vw',
+          position: 'relative',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
           overflow: 'hidden',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '40px',
+          borderTop: '1px solid rgba(234, 168, 18, 0.45)',
+          borderBottom: '1px solid rgba(234, 168, 18, 0.45)',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85), 0 0 45px rgba(234, 168, 18, 0.2)',
+          minHeight: '500px',
+          display: 'flex',
           alignItems: 'center',
-          padding: '40px',
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(234, 168, 18, 0.2)',
         }}>
-          {/* Left Column: Professionally Framed Yellow Malabar Heritage Art Image */}
-          <div style={{ position: 'relative' }}>
-            <div style={{
-              borderRadius: '20px',
-              overflow: 'hidden',
-              border: '2px solid rgba(234, 168, 18, 0.45)',
-              boxShadow: '0 16px 40px rgba(234, 168, 18, 0.25)',
-              position: 'relative',
-              background: '#0C0806',
-            }}>
-              <img 
-                src="/design haza.png" 
-                alt="Zaaha Kitchen Malabar Heritage Art" 
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxHeight: '420px',
-                  objectFit: 'cover',
-                  display: 'block',
-                  transition: 'transform 0.4s ease',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-              />
+          {/* Full Background Image Edge-to-Edge */}
+          <img 
+            src="/design haza.png" 
+            alt="Zaaha Kitchen Malabar Heritage Art" 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+          />
+
+          {/* Dark Professional Gradient Overlays for High Legibility */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(90deg, rgba(12, 8, 6, 0.96) 0%, rgba(12, 8, 6, 0.86) 45%, rgba(12, 8, 6, 0.35) 100%)',
+          }} />
+
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(circle at top right, rgba(234, 168, 18, 0.18), transparent 60%)',
+          }} />
+
+          {/* Foreground Text Content Aligned inside standard container grid */}
+          <div style={{
+            maxWidth: '1280px',
+            width: '100%',
+            margin: '0 auto',
+            padding: '60px 24px',
+            position: 'relative',
+            zIndex: 2,
+          }}>
+            <div style={{ maxWidth: '680px' }}>
+              {/* Tag Badge */}
               <div style={{
-                position: 'absolute',
-                top: '16px',
-                left: '16px',
-                background: 'rgba(12, 8, 6, 0.88)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'rgba(234, 168, 18, 0.18)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(234, 168, 18, 0.5)',
                 color: '#EAA812',
                 fontSize: '11px',
                 fontWeight: 800,
-                padding: '6px 14px',
+                padding: '6px 16px',
                 borderRadius: '9999px',
                 letterSpacing: '1.5px',
+                marginBottom: '20px',
               }}>
-                ✨ MALABAR HERITAGE ARTISTRY
+                <Sparkles size={13} />
+                <span>MALABAR HERITAGE ARTISTRY</span>
               </div>
-            </div>
-          </div>
 
-          {/* Right Column: Heritage Description & Highlights */}
-          <div>
-            <span style={{ color: '#EAA812', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} color="#EAA812" />
-              <span>TRADITION IN EVERY BITE</span>
-            </span>
-            <h3 className="font-heading" style={{ fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 700, marginTop: '10px', marginBottom: '16px', color: '#FAF6F0' }}>
-              Celebrating Authentic <span style={{ color: '#EAA812' }}>Malabar Culinary Culture</span>
-            </h3>
-            <p style={{ color: '#CBBFB4', fontSize: '15px', lineHeight: 1.7, marginBottom: '24px' }}>
-              From steaming hot <strong>Puttu & Beef (പുട്ടും ബീഫും)</strong> to freshly poured <strong>Meter Chaya (ചായ)</strong>, our kitchen preserves the authentic soul of Malabar and Middle Eastern gastronomy with original heritage recipes passed down over generations.
-            </p>
+              <span style={{ color: '#EAA812', fontSize: '12px', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+                TRADITION IN EVERY BITE
+              </span>
 
-            {/* Highlights Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '28px' }}>
-              <div style={{ background: 'rgba(234, 168, 18, 0.1)', border: '1px solid rgba(234, 168, 18, 0.28)', padding: '16px', borderRadius: '16px' }}>
-                <div style={{ color: '#EAA812', fontWeight: 800, fontSize: '14.5px', marginBottom: '4px' }}>☕ Meter Chaya (ചായ)</div>
-                <div style={{ color: '#CBBFB4', fontSize: '12.5px', lineHeight: 1.4 }}>Frothy, spiced & freshly pulled cardamom tea</div>
-              </div>
-              <div style={{ background: 'rgba(234, 168, 18, 0.1)', border: '1px solid rgba(234, 168, 18, 0.28)', padding: '16px', borderRadius: '16px' }}>
-                <div style={{ color: '#EAA812', fontWeight: 800, fontSize: '14.5px', marginBottom: '4px' }}>🍲 Puttu & Beef (പുട്ടും ബീഫും)</div>
-                <div style={{ color: '#CBBFB4', fontSize: '12.5px', lineHeight: 1.4 }}>Steamed rice cylinders with rich beef roast</div>
+              <h3 className="font-heading" style={{ fontSize: 'clamp(28px, 3.8vw, 44px)', fontWeight: 700, marginBottom: '16px', color: '#FAF6F0', lineHeight: 1.2 }}>
+                Celebrating Authentic <span style={{ color: '#EAA812' }}>Malabar Culinary Culture</span>
+              </h3>
+
+              <p style={{ color: '#E0D6CC', fontSize: '16px', lineHeight: 1.7, marginBottom: '28px' }}>
+                From steaming hot <strong>Puttu & Beef (പുട്ടും ബീഫും)</strong> to freshly poured <strong>Meter Chaya (ചായ)</strong>, our kitchen preserves the authentic soul of Malabar and Middle Eastern gastronomy with original heritage recipes passed down over generations.
+              </p>
+
+              {/* Highlights Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+                <div style={{
+                  background: 'rgba(18, 12, 8, 0.85)',
+                  backdropFilter: 'blur(14px)',
+                  border: '1px solid rgba(234, 168, 18, 0.35)',
+                  padding: '18px 22px',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.5)',
+                }}>
+                  <div style={{ color: '#EAA812', fontWeight: 800, fontSize: '15px', marginBottom: '4px' }}>☕ Meter Chaya (ചായ)</div>
+                  <div style={{ color: '#CBBFB4', fontSize: '12.5px', lineHeight: 1.45 }}>Frothy, spiced & freshly pulled cardamom tea</div>
+                </div>
+                <div style={{
+                  background: 'rgba(18, 12, 8, 0.85)',
+                  backdropFilter: 'blur(14px)',
+                  border: '1px solid rgba(234, 168, 18, 0.35)',
+                  padding: '18px 22px',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.5)',
+                }}>
+                  <div style={{ color: '#EAA812', fontWeight: 800, fontSize: '15px', marginBottom: '4px' }}>🍲 Puttu & Beef (പുട്ടും ബീഫും)</div>
+                  <div style={{ color: '#CBBFB4', fontSize: '12.5px', lineHeight: 1.45 }}>Steamed rice cylinders with rich beef roast</div>
+                </div>
               </div>
             </div>
           </div>
