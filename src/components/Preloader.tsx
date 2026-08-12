@@ -86,27 +86,36 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        maxWidth: '380px',
+        justifyContent: 'center',
+        maxWidth: '400px',
         width: '100%',
         textAlign: 'center',
         position: 'relative',
         zIndex: 2,
       }}>
-        {/* Animated Brand Logo Container */}
-        <div style={{ position: 'relative', marginBottom: '20px' }}>
+        {/* Executive Brand Logo Matching Header */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          marginBottom: '24px',
+        }}>
           <img 
             src="/zaaha logo.png" 
             alt="Zaaha Kitchen Logo" 
             style={{
-              height: '110px',
+              height: '115px',
               width: 'auto',
+              maxHeight: '130px',
               objectFit: 'contain',
-              filter: 'drop-shadow(0 0 25px rgba(234, 168, 18, 0.6))',
+              filter: 'drop-shadow(0 6px 24px rgba(234, 168, 18, 0.55))',
+              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#EAA812', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#EAA812', fontSize: '11px', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '24px' }}>
           <Sparkles size={13} />
           <span>Taste of Malabar & Middle East</span>
           <Sparkles size={13} />
