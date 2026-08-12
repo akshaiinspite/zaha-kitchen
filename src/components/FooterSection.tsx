@@ -267,10 +267,40 @@ export const FooterSection: React.FC = () => {
 
         </div>
 
-        {/* Bottom Copyright & Scroll to Top Bar */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', paddingTop: '32px' }}>
+        {/* Bottom Copyright, Legal Links & Scroll to Top Bar */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingTop: '32px' }}>
           <div style={{ fontSize: '13.5px', color: '#CBBFB4' }}>
             © {new Date().getFullYear()} <strong style={{ color: '#EAA812' }}>Zaaha Kitchen</strong>. Crafted for Ernakulam Food Lovers. All rights reserved.
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px', fontSize: '13.5px' }}>
+            <a 
+              href="/privacy-policy" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/privacy-policy');
+                window.dispatchEvent(new Event('popstate'));
+              }}
+              style={{ color: '#CBBFB4', textDecoration: 'none', transition: 'color 0.25s ease' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#EAA812')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#CBBFB4')}
+            >
+              Privacy Policy
+            </a>
+            <span style={{ color: 'rgba(234, 168, 18, 0.4)' }}>•</span>
+            <a 
+              href="/terms-and-conditions" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/terms-and-conditions');
+                window.dispatchEvent(new Event('popstate'));
+              }}
+              style={{ color: '#CBBFB4', textDecoration: 'none', transition: 'color 0.25s ease' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#EAA812')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#CBBFB4')}
+            >
+              Terms & Conditions
+            </a>
           </div>
 
           <button

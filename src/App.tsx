@@ -11,37 +11,67 @@ import { LocationsSection } from './components/LocationsSection';
 import { WhyUsSection } from './components/WhyUsSection';
 import { ContactSection } from './components/ContactSection';
 import { FooterSection } from './components/FooterSection';
+import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
+import { TermsConditionsPage } from './components/TermsConditionsPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function App() {
   const [activeStop, setActiveStop] = useState<number>(0);
+  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
+
+  // Sync window path changes
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
 
   // Initialize Lenis inertial smooth scroll synced to GSAP ScrollTrigger
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-    });
+    // Only run Lenis smooth scroll on home page
+    if (currentPath === '/' || currentPath === '') {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+      });
 
-    (window as any).lenis = lenis;
+      (window as any).lenis = lenis;
 
-    lenis.on('scroll', ScrollTrigger.update);
+      lenis.on('scroll', ScrollTrigger.update);
 
-    const tickerCb = (time: number) => {
-      lenis.raf(time * 1000);
-    };
+      const tickerCb = (time: number) => {
+        lenis.raf(time * 1000);
+      };
 
-    gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(0);
+      gsap.ticker.add(tickerCb);
+      gsap.ticker.lagSmoothing(0);
 
-    return () => {
-      gsap.ticker.remove(tickerCb);
-      lenis.destroy();
-    };
-  }, []);
+      return () => {
+        gsap.ticker.remove(tickerCb);
+        lenis.destroy();
+      };
+    }
+  }, [currentPath]);
+
+  const navigateTo = (path: string) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+  };
+
+  // Route matching
+  if (currentPath === '/privacy-policy' || currentPath === '/privacy') {
+    return <PrivacyPolicyPage onNavigateHome={() => navigateTo('/')} />;
+  }
+
+  if (currentPath === '/terms-and-conditions' || currentPath === '/terms' || currentPath === '/terms-and-condition') {
+    return <TermsConditionsPage onNavigateHome={() => navigateTo('/')} />;
+  }
 
   return (
     <div style={{ background: '#0C0806', minHeight: '100vh', color: '#FAF6F0', overflowX: 'hidden' }}>
