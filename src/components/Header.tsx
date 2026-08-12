@@ -83,11 +83,11 @@ export const Header: React.FC<HeaderProps> = () => {
             src="/zaaha logo.png" 
             alt="Zaaha Kitchen Logo" 
             style={{
-              height: scrolled ? '64px' : '82px',
+              height: scrolled ? '85px' : '120px',
               width: 'auto',
-              maxHeight: '85px',
+              maxHeight: '130px',
               objectFit: 'contain',
-              filter: 'drop-shadow(0 4px 16px rgba(234, 168, 18, 0.45))',
+              filter: 'drop-shadow(0 6px 22px rgba(234, 168, 18, 0.55))',
               transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           />

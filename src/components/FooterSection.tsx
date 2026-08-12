@@ -135,10 +135,11 @@ export const FooterSection: React.FC = () => {
                 src="/zaaha logo.png" 
                 alt="Zaaha Kitchen Logo" 
                 style={{
-                  height: '130px',
+                  height: '185px',
                   width: 'auto',
+                  maxHeight: '210px',
                   objectFit: 'contain',
-                  filter: 'drop-shadow(0 6px 20px rgba(234, 168, 18, 0.5))',
+                  filter: 'drop-shadow(0 8px 26px rgba(234, 168, 18, 0.6))',
                   display: 'block',
                 }}
               />
