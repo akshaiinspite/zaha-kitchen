@@ -159,3 +159,29 @@ body {
   pointer-events: none;
   animation: steamFloat 3.5s infinite ease-out;
 }
+
+/* Global Responsive Rules & Layout Tweaks */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media Query Tweaks for Tablets and Mobile Devices */
+@media (max-width: 1024px) {
+  .section-padding {
+    padding: 70px 20px !important;
+  }
+  .card-padding {
+    padding: 24px 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-padding {
+    padding: 50px 16px !important;
+  }
+  .card-padding {
+    padding: 20px 16px !important;
+  }
+}
+

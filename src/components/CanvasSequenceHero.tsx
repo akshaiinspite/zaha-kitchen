@@ -58,7 +58,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
     imagesRef.current = imagesArr;
   }, []);
 
-  // Crisp High-DPI Canvas Frame Rendering (Zero Ghosting / Double Images)
+  // Crisp High-DPI Canvas Frame Rendering (Zero Ghosting / Responsive Mobile Fitting)
   const renderFrame = (frameIdx: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -92,26 +92,39 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
     let offsetX = 0;
     let offsetY = 0;
 
-    if (canvasRatio > imgRatio) {
-      renderH = width / imgRatio;
-      offsetY = (height - renderH) / 2;
-    } else {
-      renderW = height * imgRatio;
+    const isMobile = width < 768;
+
+    if (isMobile) {
+      // Mobile Responsive Fit: Don't over-zoom 16:9 frame into narrow portrait viewports
+      renderW = width * 1.15;
+      renderH = renderW / imgRatio;
       offsetX = (width - renderW) / 2;
+      offsetY = (height * 0.36) - (renderH / 2);
+    } else {
+      // Desktop / Tablet Full Bleed Cover
+      if (canvasRatio > imgRatio) {
+        renderH = width / imgRatio;
+        offsetY = (height - renderH) / 2;
+      } else {
+        renderW = height * imgRatio;
+        offsetX = (width - renderW) / 2;
+      }
     }
 
     ctx.clearRect(0, 0, width, height);
-    // 1.04x Micro-crop scale to seamlessly remove corner watermarks/icons
-    const cropScale = 1.04;
+
+    // Micro-crop scale to seamlessly remove corner watermarks/icons
+    const cropScale = isMobile ? 1.02 : 1.04;
     const scaledW = renderW * cropScale;
     const scaledH = renderH * cropScale;
     const scaledOffsetX = offsetX - (scaledW - renderW) / 2;
-    // Add +40px vertical padding offset to prevent jug touching top header navlinks
-    const scaledOffsetY = offsetY - (scaledH - renderH) / 2 + 40;
+    const scaledOffsetY = isMobile 
+      ? offsetY - (scaledH - renderH) / 2
+      : offsetY - (scaledH - renderH) / 2 + 40;
 
     ctx.drawImage(img, scaledOffsetX, scaledOffsetY, scaledW, scaledH);
 
-    // 100% Watermark Mask: Erase/cover Gemini star icon in bottom-right region with dark ambient blend
+    // Erase/cover Gemini star icon in bottom-right region with dark ambient blend
     const starX = scaledOffsetX + scaledW * 0.88;
     const starY = scaledOffsetY + scaledH * 0.88;
     const patchRadius = Math.max(scaledW, scaledH) * 0.15;
@@ -252,7 +265,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
           <div
             style={{
               position: 'absolute',
-              bottom: '11%',
+              bottom: 'clamp(20px, 5vh, 70px)',
               left: '50%',
               transform: `translate(-50%, ${overlayY}px)`,
               opacity: overlayOpacity,
@@ -260,7 +273,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
               textAlign: 'center',
               pointerEvents: overlayOpacity > 0.5 ? 'auto' : 'none',
               transition: 'opacity 0.2s linear, transform 0.2s linear',
-              width: '90%',
+              width: '92%',
               maxWidth: '850px',
               background: 'transparent',
               border: 'none',
@@ -268,17 +281,17 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
               padding: 0,
             }}
           >
-            <div className="sequence-badge" style={{ margin: '0 auto 16px auto', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
+            <div className="sequence-badge" style={{ margin: '0 auto 12px auto', fontSize: 'clamp(9.5px, 2.5vw, 11px)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
               <span>✨</span> ERNAKULAM'S FAVORITE MULTICUISINE HOTSPOT
             </div>
             <h1
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(32px, 4vw, 56px)',
+                fontSize: 'clamp(22px, 5.5vw, 56px)',
                 fontWeight: 800,
                 color: '#FAF6F0',
                 lineHeight: 1.15,
-                marginBottom: '14px',
+                marginBottom: '10px',
                 letterSpacing: '-0.5px',
                 textShadow: '0 4px 28px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.95)',
               }}
@@ -287,22 +300,22 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
             </h1>
             <p
               style={{
-                fontSize: '16px',
+                fontSize: 'clamp(12.5px, 3vw, 16px)',
                 color: '#E2D7CB',
                 maxWidth: '660px',
-                margin: '0 auto 26px auto',
-                lineHeight: 1.6,
+                margin: '0 auto 20px auto',
+                lineHeight: 1.5,
                 fontWeight: 500,
                 textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.95)',
               }}
             >
               Experience a rich fusion of traditional Kerala Nadan meals, charcoal Arabic Alfaham & Majboos, sizzling Chinese delights, and artisan tea snacks prepared fresh daily.
             </p>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a 
                 href="#cuisine" 
                 className="btn-sequence-order" 
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none', padding: '10px 20px', fontSize: '13px' }}
                 onClick={(e) => {
                   e.preventDefault();
                   const target = document.querySelector('#cuisine');
@@ -314,7 +327,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
                 }}
               >
                 Explore Cuisines
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
@@ -329,6 +342,8 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
                   backdropFilter: 'blur(12px)',
                   WebkitBackdropFilter: 'blur(12px)',
                   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)',
+                  padding: '10px 20px',
+                  fontSize: '13px',
                 }}
                 onClick={(e) => {
                   e.preventDefault();

@@ -46,12 +46,13 @@ export const Header: React.FC<HeaderProps> = () => {
         left: 0,
         right: 0,
         zIndex: 100,
-        padding: scrolled ? '10px 24px' : '16px 32px',
+        padding: scrolled ? '8px 16px' : '12px 20px',
         transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
         background: scrolled 
           ? 'rgba(12, 8, 6, 0.95)' 
           : 'linear-gradient(180deg, rgba(12, 8, 6, 0.96) 0%, rgba(12, 8, 6, 0) 100%)',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(234, 168, 18, 0.3)' : 'none',
         boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.7)' : 'none',
       }}
@@ -62,7 +63,7 @@ export const Header: React.FC<HeaderProps> = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: '20px',
+        gap: '12px',
       }}>
         {/* Prominent Executive Brand Logo */}
         <a 
@@ -70,10 +71,11 @@ export const Header: React.FC<HeaderProps> = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '14px',
+            gap: '10px',
             textDecoration: 'none',
             userSelect: 'none',
             transition: 'transform 0.3s ease',
+            flexShrink: 0,
           }}
           className="header-logo-link"
           onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
@@ -82,12 +84,13 @@ export const Header: React.FC<HeaderProps> = () => {
           <img 
             src="/zaaha logo.png" 
             alt="Zaaha Kitchen Logo" 
+            className="header-logo-img"
             style={{
-              height: scrolled ? '85px' : '120px',
+              height: scrolled ? '52px' : '68px',
               width: 'auto',
-              maxHeight: '130px',
+              maxHeight: '90px',
               objectFit: 'contain',
-              filter: 'drop-shadow(0 6px 22px rgba(234, 168, 18, 0.55))',
+              filter: 'drop-shadow(0 4px 16px rgba(234, 168, 18, 0.55))',
               transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           />
@@ -99,7 +102,7 @@ export const Header: React.FC<HeaderProps> = () => {
           alignItems: 'center',
           gap: '6px',
           background: 'rgba(22, 15, 12, 0.85)',
-          padding: '8px 12px',
+          padding: '6px 10px',
           borderRadius: '9999px',
           border: '1px solid rgba(234, 168, 18, 0.3)',
           boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
@@ -114,8 +117,8 @@ export const Header: React.FC<HeaderProps> = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  padding: '8px 16px',
-                  fontSize: '13.5px',
+                  padding: '7px 14px',
+                  fontSize: '13px',
                   fontWeight: 600,
                   color: '#FAF6F0',
                   background: 'transparent',
@@ -124,6 +127,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   border: 'none',
                   outline: 'none',
                   transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = 'rgba(234, 168, 18, 0.18)';
@@ -134,7 +138,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   e.currentTarget.style.color = '#FAF6F0';
                 }}
               >
-                <Icon style={{ width: '15px', height: '15px', color: '#EAA812' }} />
+                <Icon style={{ width: '14px', height: '14px', color: '#EAA812', flexShrink: 0 }} />
                 <span>{item.label}</span>
               </button>
             );
@@ -142,29 +146,30 @@ export const Header: React.FC<HeaderProps> = () => {
         </div>
 
         {/* Right Call CTA Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
           <a 
             href="tel:9947366906"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
+              gap: '6px',
               background: 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)',
               color: '#160F0C',
-              padding: '11px 24px',
+              padding: '8px 16px',
               borderRadius: '9999px',
               fontWeight: 800,
-              fontSize: '13.5px',
-              letterSpacing: '0.5px',
+              fontSize: '12.5px',
+              letterSpacing: '0.3px',
               textDecoration: 'none',
-              boxShadow: '0 4px 20px rgba(234, 168, 18, 0.4)',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 16px rgba(234, 168, 18, 0.4)',
               transition: 'all 0.3s ease',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px) scale(1.03)')}
             onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
           >
-            <Phone style={{ width: '16px', height: '16px' }} />
-            <span>Call 9947366906</span>
+            <Phone style={{ width: '14px', height: '14px', flexShrink: 0 }} />
+            <span className="call-btn-text">Call 9947366906</span>
           </a>
 
           {/* Mobile Menu Toggle */}
@@ -174,14 +179,17 @@ export const Header: React.FC<HeaderProps> = () => {
               background: 'rgba(30, 20, 15, 0.85)',
               border: '1px solid rgba(234, 168, 18, 0.3)',
               color: '#FAF6F0',
-              padding: '10px',
-              borderRadius: '12px',
+              padding: '8px',
+              borderRadius: '10px',
               cursor: 'pointer',
               display: 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             className="mobile-menu-btn"
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X size={22} color="#EAA812" /> : <MenuIcon size={22} color="#EAA812" />}
+            {mobileMenuOpen ? <X size={20} color="#EAA812" /> : <MenuIcon size={20} color="#EAA812" />}
           </button>
         </div>
       </div>
@@ -189,18 +197,18 @@ export const Header: React.FC<HeaderProps> = () => {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div style={{
-          marginTop: '16px',
-          padding: '20px',
+          marginTop: '12px',
+          padding: '16px',
           background: 'rgba(22, 15, 12, 0.98)',
-          borderRadius: '20px',
+          borderRadius: '16px',
           border: '1px solid rgba(234, 168, 18, 0.35)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '10px',
+          gap: '8px',
           boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
         }}>
-          <div style={{ textAlign: 'center', paddingBottom: '12px', borderBottom: '1px solid rgba(234, 168, 18, 0.2)' }}>
-            <img src="/zaaha logo.png" alt="Zaaha Logo" style={{ height: '70px', filter: 'drop-shadow(0 4px 12px rgba(234, 168, 18, 0.4))' }} />
+          <div style={{ textAlign: 'center', paddingBottom: '10px', borderBottom: '1px solid rgba(234, 168, 18, 0.2)' }}>
+            <img src="/zaaha logo.png" alt="Zaaha Logo" style={{ height: '55px', filter: 'drop-shadow(0 4px 12px rgba(234, 168, 18, 0.4))' }} />
           </div>
           {navLinks.map((item, idx) => {
             const Icon = item.icon;
@@ -215,18 +223,18 @@ export const Header: React.FC<HeaderProps> = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  padding: '12px 16px',
-                  borderRadius: '12px',
+                  padding: '10px 14px',
+                  borderRadius: '10px',
                   background: 'rgba(234, 168, 18, 0.1)',
                   color: '#FAF6F0',
                   border: '1px solid rgba(234, 168, 18, 0.25)',
-                  fontSize: '14px',
+                  fontSize: '13.5px',
                   fontWeight: 600,
                   textAlign: 'left',
                   cursor: 'pointer',
                 }}
               >
-                <Icon size={18} color="#EAA812" />
+                <Icon size={16} color="#EAA812" />
                 <span>{item.label}</span>
               </button>
             );
@@ -235,12 +243,23 @@ export const Header: React.FC<HeaderProps> = () => {
       )}
 
       <style>{`
+        @media (min-width: 1025px) {
+          .header-logo-img {
+            height: ${scrolled ? '70px' : '90px'} !important;
+          }
+        }
         @media (max-width: 1024px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
         }
+        @media (max-width: 480px) {
+          .call-btn-text {
+            font-size: 11.5px !important;
+          }
+        }
       `}</style>
     </header>
+
   );
 };
 
