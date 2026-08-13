@@ -58,7 +58,7 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
     imagesRef.current = imagesArr;
   }, []);
 
-  // Crisp High-DPI Canvas Frame Rendering (Zero Ghosting / Responsive Mobile Fitting)
+  // Crisp High-DPI Canvas Frame Rendering (Full-Bleed Cover Viewport)
   const renderFrame = (frameIdx: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -92,35 +92,22 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
     let offsetX = 0;
     let offsetY = 0;
 
-    const isMobile = width < 768;
-
-    if (isMobile) {
-      // Mobile Responsive Fit: Don't over-zoom 16:9 frame into narrow portrait viewports
-      renderW = width * 1.15;
-      renderH = renderW / imgRatio;
-      offsetX = (width - renderW) / 2;
-      offsetY = (height * 0.36) - (renderH / 2);
+    if (canvasRatio > imgRatio) {
+      renderH = width / imgRatio;
+      offsetY = (height - renderH) / 2;
     } else {
-      // Desktop / Tablet Full Bleed Cover
-      if (canvasRatio > imgRatio) {
-        renderH = width / imgRatio;
-        offsetY = (height - renderH) / 2;
-      } else {
-        renderW = height * imgRatio;
-        offsetX = (width - renderW) / 2;
-      }
+      renderW = height * imgRatio;
+      offsetX = (width - renderW) / 2;
     }
 
     ctx.clearRect(0, 0, width, height);
 
     // Micro-crop scale to seamlessly remove corner watermarks/icons
-    const cropScale = isMobile ? 1.02 : 1.04;
+    const cropScale = 1.04;
     const scaledW = renderW * cropScale;
     const scaledH = renderH * cropScale;
     const scaledOffsetX = offsetX - (scaledW - renderW) / 2;
-    const scaledOffsetY = isMobile 
-      ? offsetY - (scaledH - renderH) / 2
-      : offsetY - (scaledH - renderH) / 2 + 40;
+    const scaledOffsetY = offsetY - (scaledH - renderH) / 2;
 
     ctx.drawImage(img, scaledOffsetX, scaledOffsetY, scaledW, scaledH);
 
@@ -260,12 +247,13 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
         <div className="sequence-vignette" />
         <div className="sequence-bottom-gradient" />
 
-        {/* Final Frame Professional Hero Title Reveal (Clean Floating Layout - No Box) */}
+        {/* Final Frame Professional Hero Title Reveal Floating Inside Hero Canvas */}
         {isLoaded && (
           <div
+            className="hero-floating-container"
             style={{
               position: 'absolute',
-              bottom: 'clamp(20px, 5vh, 70px)',
+              bottom: 'clamp(16px, 4vh, 65px)',
               left: '50%',
               transform: `translate(-50%, ${overlayY}px)`,
               opacity: overlayOpacity,
@@ -274,39 +262,42 @@ export const CanvasSequenceHero: React.FC<HeroProps> = () => {
               pointerEvents: overlayOpacity > 0.5 ? 'auto' : 'none',
               transition: 'opacity 0.2s linear, transform 0.2s linear',
               width: '92%',
-              maxWidth: '850px',
-              background: 'transparent',
-              border: 'none',
-              boxShadow: 'none',
-              padding: 0,
+              maxWidth: '820px',
+              padding: 'clamp(16px, 3vw, 24px)',
+              background: 'rgba(14, 9, 6, 0.72)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              borderRadius: '24px',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
             }}
           >
-            <div className="sequence-badge" style={{ margin: '0 auto 12px auto', fontSize: 'clamp(9.5px, 2.5vw, 11px)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
+            <div className="sequence-badge" style={{ margin: '0 auto 10px auto', fontSize: 'clamp(9px, 2.2vw, 11px)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
               <span>✨</span> ERNAKULAM'S FAVORITE MULTICUISINE HOTSPOT
             </div>
             <h1
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(22px, 5.5vw, 56px)',
+                fontSize: 'clamp(20px, 4.8vw, 50px)',
                 fontWeight: 800,
                 color: '#FAF6F0',
                 lineHeight: 1.15,
-                marginBottom: '10px',
+                marginBottom: '8px',
                 letterSpacing: '-0.5px',
-                textShadow: '0 4px 28px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.95)',
+                textShadow: '0 4px 28px rgba(0, 0, 0, 0.95)',
               }}
             >
               Authentic Malabar & <span style={{ color: '#EAA812' }}>Multicuisine Dining</span>
             </h1>
             <p
               style={{
-                fontSize: 'clamp(12.5px, 3vw, 16px)',
+                fontSize: 'clamp(12px, 2.8vw, 15.5px)',
                 color: '#E2D7CB',
-                maxWidth: '660px',
-                margin: '0 auto 20px auto',
+                maxWidth: '640px',
+                margin: '0 auto 16px auto',
                 lineHeight: 1.5,
                 fontWeight: 500,
-                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.95)',
+                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95)',
               }}
             >
               Experience a rich fusion of traditional Kerala Nadan meals, charcoal Arabic Alfaham & Majboos, sizzling Chinese delights, and artisan tea snacks prepared fresh daily.

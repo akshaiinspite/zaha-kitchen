@@ -68,22 +68,35 @@ export const CuisineSection: React.FC = () => {
         </div>
 
         {/* Cuisine Selector Tabs */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', marginBottom: '40px' }}>
+        <div 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(145px, 1fr))', 
+            gap: '10px', 
+            marginBottom: '32px',
+            maxWidth: '900px',
+            margin: '0 auto 32px auto',
+          }}
+        >
           {cuisines.map((c, idx) => (
             <button
               key={c.id}
               onClick={() => setActiveTab(idx)}
               style={{
-                padding: '10px 20px',
+                padding: '11px 16px',
                 borderRadius: '9999px',
-                background: activeTab === idx ? 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)' : 'rgba(22, 15, 12, 0.8)',
+                background: activeTab === idx ? 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)' : 'rgba(22, 15, 12, 0.85)',
                 color: activeTab === idx ? '#160F0C' : '#FAF6F0',
                 border: `1px solid ${activeTab === idx ? '#EAA812' : 'rgba(234, 168, 18, 0.28)'}`,
                 fontWeight: 800,
-                fontSize: 'clamp(12px, 2vw, 14px)',
+                fontSize: 'clamp(11.5px, 2.2vw, 13.5px)',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 boxShadow: activeTab === idx ? '0 8px 25px rgba(234, 168, 18, 0.4)' : 'none',
+                textAlign: 'center',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
               }}
             >
               {c.title}
@@ -93,95 +106,105 @@ export const CuisineSection: React.FC = () => {
 
         {/* Dynamic Display Card */}
         <div style={{
-          background: 'rgba(22, 15, 12, 0.9)',
+          background: 'rgba(22, 15, 12, 0.92)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           border: '1px solid rgba(234, 168, 18, 0.35)',
           borderRadius: '24px',
           overflow: 'hidden',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          display: 'flex',
+          flexDirection: 'column-reverse',
           boxShadow: '0 24px 60px rgba(0,0,0,0.7)',
-        }}>
-          {/* Left Side Info */}
-          <div style={{ padding: 'clamp(20px, 4vw, 48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <span style={{
-              display: 'inline-block',
-              background: 'rgba(234, 168, 18, 0.15)',
-              color: '#EAA812',
-              border: '1px solid rgba(234, 168, 18, 0.35)',
-              padding: '5px 12px',
-              borderRadius: '9999px',
-              fontSize: '11px',
-              fontWeight: 800,
-              letterSpacing: '1px',
-              marginBottom: '14px',
-              width: 'fit-content',
-            }}>
-              {currentCuisine.tag}
-            </span>
+        }} className="cuisine-display-card">
+          
+          {/* Main Card Content */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+            alignItems: 'center',
+            width: '100%',
+          }}>
+            {/* Left Side Info */}
+            <div style={{ padding: 'clamp(20px, 4vw, 44px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <span style={{
+                display: 'inline-block',
+                background: 'rgba(234, 168, 18, 0.15)',
+                color: '#EAA812',
+                border: '1px solid rgba(234, 168, 18, 0.35)',
+                padding: '5px 12px',
+                borderRadius: '9999px',
+                fontSize: '11px',
+                fontWeight: 800,
+                letterSpacing: '1px',
+                marginBottom: '14px',
+                width: 'fit-content',
+              }}>
+                {currentCuisine.tag}
+              </span>
 
-            <h3 className="font-heading" style={{ fontSize: 'clamp(22px, 3.5vw, 32px)', fontWeight: 700, color: '#FAF6F0', marginBottom: '6px' }}>
-              {currentCuisine.title}
-            </h3>
-            <p style={{ color: '#EAA812', fontSize: 'clamp(13px, 2vw, 15px)', fontWeight: 700, marginBottom: '16px' }}>
-              {currentCuisine.subtitle}
-            </p>
-            <p style={{ color: '#CBBFB4', fontSize: '14.5px', lineHeight: 1.7, marginBottom: '24px' }}>
-              {currentCuisine.description}
-            </p>
+              <h3 className="font-heading" style={{ fontSize: 'clamp(22px, 3.5vw, 34px)', fontWeight: 700, color: '#FAF6F0', marginBottom: '6px' }}>
+                {currentCuisine.title}
+              </h3>
+              <p style={{ color: '#EAA812', fontSize: 'clamp(13px, 2vw, 15px)', fontWeight: 700, marginBottom: '14px' }}>
+                {currentCuisine.subtitle}
+              </p>
+              <p style={{ color: '#CBBFB4', fontSize: '14px', lineHeight: 1.65, marginBottom: '22px' }}>
+                {currentCuisine.description}
+              </p>
 
-            {/* Dish Highlights */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px', marginBottom: '28px' }}>
-              {currentCuisine.highlights.map((h, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FAF6F0', fontSize: '13px', fontWeight: 600 }}>
-                  <Sparkles size={13} color="#EAA812" style={{ flexShrink: 0 }} />
-                  <span>{h}</span>
-                </div>
-              ))}
+              {/* Dish Highlights */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px', marginBottom: '26px' }}>
+                {currentCuisine.highlights.map((h, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FAF6F0', fontSize: '12.5px', fontWeight: 600 }}>
+                    <Sparkles size={13} color="#EAA812" style={{ flexShrink: 0 }} />
+                    <span>{h}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a 
+                href="#contact-form-section"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector('#contact-form-section');
+                  if (target) {
+                    const lenis = (window as any).lenis;
+                    if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+                    else target.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)',
+                  color: '#160F0C',
+                  padding: '12px 24px',
+                  borderRadius: '12px',
+                  fontWeight: 800,
+                  fontSize: '13.5px',
+                  textDecoration: 'none',
+                  width: 'fit-content',
+                  boxShadow: '0 8px 24px rgba(234, 168, 18, 0.4)',
+                }}
+              >
+                <Utensils size={15} />
+                <span>Reserve & Order Now</span>
+                <ArrowRight size={15} />
+              </a>
             </div>
 
-            <a 
-              href="#contact-form-section"
-              onClick={(e) => {
-                e.preventDefault();
-                const target = document.querySelector('#contact-form-section');
-                if (target) {
-                  const lenis = (window as any).lenis;
-                  if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.2 });
-                  else target.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'linear-gradient(135deg, #EAA812 0%, #E58A2B 100%)',
-                color: '#160F0C',
-                padding: '12px 24px',
-                borderRadius: '12px',
-                fontWeight: 800,
-                fontSize: '13.5px',
-                textDecoration: 'none',
-                width: 'fit-content',
-                boxShadow: '0 8px 24px rgba(234, 168, 18, 0.4)',
-              }}
-            >
-              <Utensils size={15} />
-              <span>Reserve & Order Now</span>
-              <ArrowRight size={15} />
-            </a>
+            {/* Right Side Authentic Dish Image */}
+            <div style={{ position: 'relative', height: '100%', minHeight: 'clamp(220px, 32vh, 380px)', width: '100%' }}>
+              <img 
+                src={currentCuisine.image} 
+                alt={currentCuisine.title}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(22, 15, 12, 0.85) 0%, transparent 60%)' }} />
+            </div>
           </div>
 
-          {/* Right Side Authentic Dish Image */}
-          <div style={{ position: 'relative', minHeight: '260px' }}>
-            <img 
-              src={currentCuisine.image} 
-              alt={currentCuisine.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(22, 15, 12, 0.8) 0%, transparent 40%)' }} />
-          </div>
         </div>
 
       </div>
